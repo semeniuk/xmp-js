@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XMP-js Demo</title>
+    <style>
+        input {
+            display: block;
+            margin: 10px auto;
+        }
+        textarea {
+            display: block;
+            margin: 0 5%;
+            width: 90%;
+            height: 200px;
+        }
+        textarea.raw {
+            height: 500px;
+        }
+        p {
+            margin: 15px 5% 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file">
+    <p>Raw XMP:</p>
+    <textarea class="raw"></textarea>
+    <p>JSON:</p>
+    <textarea class="parsed"></textarea>
+    <script src="dist/xmp.iife.min.js"></script>
+    <script>
+        let input = document.querySelector("input");
+        let raw = document.querySelector("textarea.raw");
+        let parsed = document.querySelector("textarea.parsed");
+        input.addEventListener("change", (e) => {
+            let file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = e => {
+                let xmp = new XMP(e.target.result);
+                raw.value = xmp.find();
+                parsed.value += JSON.stringify(xmp.parse(), null, 4);
+            };
+            reader.readAsDataURL(file);
+        })
+    </script>
+</body>
+</html>

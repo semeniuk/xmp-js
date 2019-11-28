@@ -1,0 +1,42 @@
+{
+  "name": "xmp-js",
+  "version": "0.0.1",
+  "description": "Extract and parse XMP from JPEG",
+  "main": "dist/xmp.cjs.min.js",
+  "scripts": {
+    "lint": "npx eslint --ext .js .",
+    "lint:fix": "npm run lint -- --fix",
+    "build:dev": "cross-env NODE_ENV=development npx rollup --config  --environment BUILD:development",
+    "build": "cross-env NODE_ENV=production npx rollup --config  --environment BUILD:production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/semeniuk/xmp-js.git"
+  },
+  "keywords": [
+    "XMP",
+    "JPEG",
+    "metadata",
+    "parsing"
+  ],
+  "author": "Yurii Semeniuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/semeniuk/xmp-js/issues"
+  },
+  "homepage": "https://github.com/semeniuk/xmp-js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.7.1",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2"
+  }
+}
