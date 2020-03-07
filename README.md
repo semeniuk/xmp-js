@@ -49,7 +49,7 @@ let xmp = new XMP(< ArrayBuffer or dataURI >),
 const XMP = require("xmp-js"),
     fs = require("fs");
 
-fs.readFile(< ArrayBuffer or dataURI >, (err, file) => {
+fs.readFile(< path to JPEG file >, (err, file) => {
     if (err) {
         console.error("Error while reading the file", err);
     }
