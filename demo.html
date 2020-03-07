@@ -41,7 +41,7 @@
             reader.onload = e => {
                 let xmp = new XMP(e.target.result);
                 raw.value = xmp.find();
-                parsed.value += JSON.stringify(xmp.parse(), null, 4);
+                parsed.value = JSON.stringify(xmp.parse(), null, 4);
             };
             reader.readAsDataURL(file);
         })

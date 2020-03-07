@@ -1,7 +1,7 @@
 {
   "name": "xmp-js",
-  "version": "0.0.1",
-  "description": "Extract and parse XMP from JPEG",
+  "version": "0.0.2",
+  "description": "Read and parse XMP from JPEG",
   "main": "dist/xmp.cjs.min.js",
   "scripts": {
     "lint": "npx eslint --ext .js .",

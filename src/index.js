@@ -85,12 +85,30 @@ class XMP {
         }
 
         let out = {};
-        ["title", "description", "rights", "creator"].forEach(x => {
-            let tagRegex = new RegExp(`<dc:${x}>(.*)</dc:${x}>`, "smig"),
+        ["title", "description", "rights", "creator", "subject"].forEach(x => {
+            let tagRegex = new RegExp(`<dc:${x}>(.*?)</dc:${x}>`, "smig"),
                 tagMatches = tagRegex.exec(xmp);
-            if (tagMatches && tagMatches[1]) {
+
+            if (!tagMatches || tagMatches.length === 0) {
+                return;
+            }
+
+            let value = tagMatches[1].trim();
+
+            if (value.toLowerCase().indexOf("<rdf:bag>") === 0) {
+                let r = new RegExp("<rdf:li>(.*?)</rdf:li>", "smig"),
+                    match = r.exec(value),
+                    result = [];
+
+                while (match) {
+                    result.push(match[1]);
+
+                    match = r.exec(value);
+                }
+                out[x] = result;
+            } else {
                 // remove all tags
-                out[x] = tagMatches[1].replace(/<[^>]*>?/gm, "").trim();
+                out[x] = value.replace(/<[^>]*>?/gm, "").trim();
             }
         });
 

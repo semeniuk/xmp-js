@@ -1,5 +1,7 @@
+<p align="center"><img width="220" src="https://user-images.githubusercontent.com/15949274/76147803-fa6a4300-60b0-11ea-8e5a-f1cc65d6c256.jpg" alt="xmp-js logo"></a></p>
+
 # XMP Parser
-Extract and parse XMP from JPEG
+Super-light and fast JavaScript lib to read and parse [XMP (Extensible Metadata Platform)](https://en.wikipedia.org/wiki/Extensible_Metadata_Platform) metadata (such as *Title*, *Description* etc.) from JPEG files written, for example, by Adobe Photoshop and Adobe Lightroom.
 
 ## Install
 
@@ -29,6 +31,8 @@ npm i xmp-js
 </script>
 ```
 
+See `demo.html` for example.
+
 ### As ES6 Module
 
 ```js
@@ -42,8 +46,22 @@ let xmp = new XMP(< ArrayBuffer or dataURI >),
 ### In Node.js
 
 ```js
-// TBD
+const XMP = require("xmp-js"),
+    fs = require("fs");
+
+fs.readFile(< ArrayBuffer or dataURI >, (err, file) => {
+    if (err) {
+        console.error("Error while reading the file", err);
+    }
+
+    let xmp = new XMP(file.buffer),
+        raw = xmp.find(),
+        parsed = xmp.parse();
+    // do what you want with `raw` or `parsed` XMP
+});
 ```
+
+See `demo.js` for example.
 
 ## Build
 
