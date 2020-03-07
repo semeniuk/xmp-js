@@ -54,7 +54,7 @@ fs.readFile(< path to JPEG file >, (err, file) => {
         console.error("Error while reading the file", err);
     }
 
-    let xmp = new XMP(file.buffer),
+    let xmp = new XMP(file),
         raw = xmp.find(),
         parsed = xmp.parse();
     // do what you want with `raw` or `parsed` XMP

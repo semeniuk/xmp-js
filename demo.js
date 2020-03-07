@@ -1,4 +1,4 @@
-const XMP = require("./dist/xmp.cjs.js"),
+const XMP = require("./dist/xmp.cjs.min.js"),
     fs = require("fs");
 
 fs.readFile("assets/logo.jpg", (err, file) => {
@@ -6,7 +6,7 @@ fs.readFile("assets/logo.jpg", (err, file) => {
         console.error("Error while reading the file", err);
     }
 
-    let xmp = new XMP(file.buffer),
+    let xmp = new XMP(file),
         parsed = xmp.parse();
     console.log(parsed);
 });

@@ -3,6 +3,8 @@ class XMP {
     constructor(source) {
         if (source instanceof ArrayBuffer) {
             this.buffer = source;
+        } else if (source instanceof Uint8Array) {
+            this.buffer = source.buffer;
         } else if (typeof source === "string" || source instanceof String) {
             this.fromDataUri(source);
         }
@@ -23,6 +25,8 @@ class XMP {
         let buffer;
         if (source instanceof ArrayBuffer) {
             buffer = source;
+        } else if (source instanceof Uint8Array) {
+            this.buffer = source.buffer;
         } else if (typeof source === "string" || source instanceof String) {
             buffer = XMP.dataUriToBuffer(source);
         }

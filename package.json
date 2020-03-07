@@ -1,6 +1,6 @@
 {
   "name": "xmp-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Read and parse XMP from JPEG",
   "main": "dist/xmp.cjs.min.js",
   "scripts": {
